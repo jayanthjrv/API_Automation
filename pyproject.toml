@@ -1,0 +1,47 @@
+[project]
+name = "playwright-python-async"
+version = "1.0.0"
+description = "Async Playwright test automation framework"
+requires-python = ">=3.8"
+dependencies = [
+    "pytest>=8.4.1",
+    "pytest-xdist==3.8.0",
+    "pytest-rerunfailures==16.1.0",
+    "pytest-playwright==0.7.1",
+    "pytest-asyncio>=0.23.0",
+    "playwright==1.56.0",
+    "python-dotenv==1.2.1",
+    "pytest-html>=3.0.0",
+    "pytest-cov>=4.0.0",
+    "pytest-mock>=3.0.0",
+    "pytest-json-report>=1.5.0",
+    "flake8>=7.0.0",
+    "black>=23.0.0"
+]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+asyncio_default_test_loop_scope = "function"
+testpaths = ["src/tests"]
+python_files = ["test_*.py", "*_test.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = [
+    "-v",
+    "--tb=short",
+    "--json-report",
+    "--json-report-file=test-results/reports/report.json",
+    "--junit-xml=test-results/reports/junit.xml",
+    "--reruns=1",
+    "--reruns-delay=2",
+    "--screenshot=only-on-failure",
+    "--video=retain-on-failure",
+    "--tracing=retain-on-failure"
+]
+markers = [
+    "description: add description to test",
+    "sanity: mark a test as a sanity test"
+]
+[tool.black]
+line-length = 150
