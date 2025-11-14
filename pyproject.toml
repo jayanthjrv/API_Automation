@@ -33,7 +33,7 @@ addopts = [
     "--json-report",
     "--json-report-file=test-results/reports/report.json",
     "--junit-xml=test-results/reports/junit.xml",
-    "--reruns=1",
+    "--reruns=0",
     "--reruns-delay=2",
     "--screenshot=only-on-failure",
     "--video=retain-on-failure",
